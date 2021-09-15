@@ -1,4 +1,4 @@
-package com.moviestreamingapp.retrofit;
+package com.moviestreamingapp.retrofit_singlton_pattern;
 
 public class Credentials {
 
