@@ -10,9 +10,7 @@ import java.util.List;
 //this class is for getting multiple movies in results array
 //https://api.themoviedb.org/3/movie/popular?api_key=459351d1311a26f26c93016a0d788db7
 
-public class MoviesResponse {
-
-
+public class MoviesSearchResponse {
 
     @SerializedName("total_results")
     private int total_results;
@@ -32,7 +30,7 @@ public class MoviesResponse {
 
     @Override
     public String toString() {
-        return "MoviesResponse{" +
+        return "MoviesResponsesdds{" +
                 "total_results=" + total_results +
                 ", results=" + results +
                 '}';
