@@ -1,9 +1,8 @@
-package com.moviestreamingapp.retrofit_singlton_pattern.response;
+package com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.response;
 
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.moviestreamingapp.retrofit_singlton_pattern.models.MovieModel;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models.MovieModel;
 
 import java.util.List;
 

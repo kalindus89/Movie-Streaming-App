@@ -1,4 +1,4 @@
-package com.moviestreamingapp;
+package com.moviestreamingapp.old_ui_desgin.adapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.moviestreamingapp.retrofit_singlton_pattern.models.MovieModel;
+import com.moviestreamingapp.R;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models.MovieModel;
 
 import java.util.Locale;
 
@@ -30,7 +31,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         rating_bar = findViewById(R.id.rating_bar);
         movie_overView = findViewById(R.id.movie_overView);
 
-        //get data from list view
+
         if(getIntent().hasExtra("movie")){
             MovieModel movieModel = getIntent().getParcelableExtra("movie");
 

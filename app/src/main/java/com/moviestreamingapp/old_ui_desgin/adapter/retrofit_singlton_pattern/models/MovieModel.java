@@ -1,4 +1,4 @@
-package com.moviestreamingapp.retrofit_singlton_pattern.models;
+package com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

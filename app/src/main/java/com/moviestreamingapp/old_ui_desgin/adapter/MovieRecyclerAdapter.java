@@ -1,4 +1,4 @@
-package com.moviestreamingapp.adapter;
+package com.moviestreamingapp.old_ui_desgin.adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,9 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.moviestreamingapp.MovieDetailActivity;
 import com.moviestreamingapp.R;
-import com.moviestreamingapp.retrofit_singlton_pattern.models.MovieModel;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models.MovieModel;
 
 import java.util.List;
 import java.util.Locale;

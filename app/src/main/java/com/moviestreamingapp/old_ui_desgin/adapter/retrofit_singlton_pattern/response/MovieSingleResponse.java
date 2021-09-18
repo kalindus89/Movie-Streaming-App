@@ -1,10 +1,8 @@
-package com.moviestreamingapp.retrofit_singlton_pattern.response;
+package com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.response;
 
 
 import com.google.gson.annotations.SerializedName;
-import com.moviestreamingapp.retrofit_singlton_pattern.models.MovieModel;
-
-import java.util.List;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models.MovieModel;
 
 //this class is for getting 1 movie data
 //https://api.themoviedb.org/3/movie/550?api_key=459351d1311a26f26c93016a0d788db7

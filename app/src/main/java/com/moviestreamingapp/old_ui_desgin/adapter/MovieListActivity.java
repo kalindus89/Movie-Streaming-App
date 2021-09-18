@@ -1,4 +1,4 @@
-package com.moviestreamingapp;
+package com.moviestreamingapp.old_ui_desgin.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
-import com.moviestreamingapp.adapter.MovieRecyclerAdapter;
-import com.moviestreamingapp.retrofit_singlton_pattern.Credentials;
-import com.moviestreamingapp.retrofit_singlton_pattern.MovieApiInterface;
-import com.moviestreamingapp.retrofit_singlton_pattern.ServiceClass;
-import com.moviestreamingapp.retrofit_singlton_pattern.models.MovieModel;
-import com.moviestreamingapp.retrofit_singlton_pattern.response.MoviesSearchResponse;
+import com.moviestreamingapp.R;
+import com.moviestreamingapp.old_ui_desgin.adapter.MovieRecyclerAdapter;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.Credentials;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.MovieApiInterface;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.ServiceClass;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models.MovieModel;
+import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.response.MoviesSearchResponse;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieStreamingApp">
         <activity
-            android:name=".MovieDetailActivity"
+            android:name=".old_ui_desgin.adapter.MovieDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".MovieListActivity"
+            android:name=".old_ui_desgin.adapter.MovieListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
