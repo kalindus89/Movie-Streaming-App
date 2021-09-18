@@ -30,6 +30,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         rating_bar = findViewById(R.id.rating_bar);
         movie_overView = findViewById(R.id.movie_overView);
 
+        //get data from list view
         if(getIntent().hasExtra("movie")){
             MovieModel movieModel = getIntent().getParcelableExtra("movie");
 
