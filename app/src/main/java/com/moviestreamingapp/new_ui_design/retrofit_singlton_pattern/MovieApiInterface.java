@@ -1,7 +1,7 @@
-package com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern;
+package com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern;
 
-import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models.MovieModel;
-import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.response.MoviesSearchResponse;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.models.MovieModel;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.response.MoviesSearchResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,4 +1,4 @@
-package com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern;
+package com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern;
 
 public class Credentials {
 

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.moviestreamingapp.R;
-import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models.MovieModel;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.models.MovieModel;
 
 import java.util.List;
 import java.util.Locale;

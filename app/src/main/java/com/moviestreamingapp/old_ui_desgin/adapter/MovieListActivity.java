@@ -11,12 +11,11 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.moviestreamingapp.R;
-import com.moviestreamingapp.old_ui_desgin.adapter.MovieRecyclerAdapter;
-import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.Credentials;
-import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.MovieApiInterface;
-import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.ServiceClass;
-import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.models.MovieModel;
-import com.moviestreamingapp.old_ui_desgin.adapter.retrofit_singlton_pattern.response.MoviesSearchResponse;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.Credentials;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.MovieApiInterface;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.ServiceClass;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.models.MovieModel;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.response.MoviesSearchResponse;
 
 import java.util.ArrayList;
 import java.util.List;
