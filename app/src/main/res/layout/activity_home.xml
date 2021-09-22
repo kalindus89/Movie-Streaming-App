@@ -79,8 +79,18 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/banner_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tabBackground="@drawable/slider_tab_indicator"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                app:tabMaxWidth="15dp"
+                app:tabIndicatorHeight="0dp"/>
 
     </RelativeLayout>
 

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/drawable/slider_tab_indicator.xml" value="0.2703125" />
+        <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/drawable/unselected.xml" value="0.2703125" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/font/montserrat_bold.xml" value="0.1935185185185185" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/layout/activity_home.xml" value="0.2829861111111111" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/layout/activity_main.xml" value="0.2210144927536232" />
