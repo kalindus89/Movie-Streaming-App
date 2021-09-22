@@ -51,7 +51,7 @@ public class PagerAdapterBanners extends PagerAdapter {
         TextView movieName= view.findViewById(R.id.movieName);
 
         movieName.setText(movieModelList.get(position).getTitle());
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movieModelList.get(position).getBackdrop_path()).placeholder(R.drawable.ic_launcher_background).into(banner_imageView);
+        Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movieModelList.get(position).getBackdrop_path()).placeholder(R.drawable.loading_image).into(banner_imageView);
         container.addView(view);
 
         return view;

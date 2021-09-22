@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
-
+      Timer  sliderTimer;
     private void setBannerSlider() {
 
         pagerAdapterBanners = new PagerAdapterBanners(this, movieModelList);
@@ -51,9 +51,30 @@ public class HomeActivity extends AppCompatActivity {
         tab_indicator.setupWithViewPager(banner_view_pager);
         getPopularMovies();
 
-        Timer sliderTimer= new Timer();
-        sliderTimer.scheduleAtFixedRate(new AutoSlider(),6000,6000);
+
+
+
         tab_indicator.setupWithViewPager(banner_view_pager,true);
+
+        banner_view_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                sliderTimer.cancel();
+                sliderTimer = null;
+                 sliderTimer= new Timer();
+                sliderTimer.scheduleAtFixedRate(new AutoSlider(),6000,6000);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void getPopularMovies() {
@@ -108,5 +129,23 @@ public class HomeActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        sliderTimer= new Timer();
+        sliderTimer.scheduleAtFixedRate(new AutoSlider(),6000,6000);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(sliderTimer!=null) {
+            sliderTimer.cancel();
+            sliderTimer = null;
+        }
+
     }
 }
