@@ -5,11 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
@@ -47,10 +45,13 @@ public class PagerAdapterBanners extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.banner_main_movies_item,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_banner_main_movies,null);
 
         ImageView banner_imageView= view.findViewById(R.id.banner_imageView);
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movieModelList.get(position).getPoster_path()).placeholder(R.drawable.ic_launcher_background).into(banner_imageView);
+        TextView movieName= view.findViewById(R.id.movieName);
+
+        movieName.setText(movieModelList.get(position).getTitle());
+        Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movieModelList.get(position).getBackdrop_path()).placeholder(R.drawable.ic_launcher_background).into(banner_imageView);
         container.addView(view);
 
         return view;

@@ -22,8 +22,9 @@ public class MovieModel implements Parcelable {
     float vote_average;
     String overview;
     String original_language;
+    String backdrop_path;
 
-    public MovieModel(String title, String poster_path, String release_date, int id, float vote_average, String overview, String original_language) {
+    public MovieModel(String title, String poster_path, String release_date, int id, float vote_average, String overview, String original_language, String backdrop_path) {
         this.title = title;
         this.poster_path = poster_path;
         this.release_date = release_date;
@@ -31,6 +32,7 @@ public class MovieModel implements Parcelable {
         this.vote_average = vote_average;
         this.overview = overview;
         this.original_language = original_language;
+        this.backdrop_path = backdrop_path;
     }
 
     protected MovieModel(Parcel in) {
@@ -71,6 +73,10 @@ public class MovieModel implements Parcelable {
         return original_language;
     }
 
+    public String getBackdrop_path() {
+        return backdrop_path;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -85,6 +91,7 @@ public class MovieModel implements Parcelable {
         parcel.writeFloat(vote_average);
         parcel.writeString(overview);
         parcel.writeString(original_language);
+        parcel.writeString(backdrop_path);
     }
 
 
