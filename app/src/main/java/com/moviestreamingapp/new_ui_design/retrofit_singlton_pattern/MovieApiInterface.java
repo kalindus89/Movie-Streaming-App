@@ -24,7 +24,7 @@ public interface MovieApiInterface{
             @Query("api_key") String api_key
     );
 
-    @GET("movie/popular")
+    @GET("movie/now_playing")
     Call<MoviesSearchResponse> getPopularMovies(
             @Query("api_key") String api_key
     );

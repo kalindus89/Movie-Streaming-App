@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/drawable/selected.xml" value="0.2703125" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/drawable/slider_tab_indicator.xml" value="0.2703125" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/drawable/unselected.xml" value="0.2703125" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/font/montserrat_bold.xml" value="0.1935185185185185" />
@@ -10,6 +11,8 @@
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/layout/activity_main.xml" value="0.2210144927536232" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/layout/activity_movie_detail.xml" value="0.2105978260869565" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/layout/banner_main_movies_item.xml" value="0.21105072463768115" />
+        <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/layout/item_banner_main_movies.xml" value="0.21105072463768115" />
+        <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/layout/item_movie_list.xml" value="0.21105072463768115" />
         <entry key="..\:/Work/Android/AndroidStudioProjects/AndroidStudioProjectsAll/MovieStreamingApp/app/src/main/res/layout/movie_list_item.xml" value="0.2105978260869565" />
       </map>
     </option>
