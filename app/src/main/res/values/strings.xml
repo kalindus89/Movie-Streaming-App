@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MovieStreamingApp</string>
+    <string name="hintSearchMess">Type here to search</string>
 </resources>

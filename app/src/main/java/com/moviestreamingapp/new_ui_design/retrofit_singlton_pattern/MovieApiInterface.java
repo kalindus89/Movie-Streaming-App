@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface MovieApiInterface{
+public interface MovieApiInterface {
 
     @GET("search/movie")
     Call<MoviesSearchResponse> getSearchMovies(
@@ -25,7 +25,22 @@ public interface MovieApiInterface{
     );
 
     @GET("movie/now_playing")
+    Call<MoviesSearchResponse> getNowPlayingMovies(
+            @Query("api_key") String api_key
+    );
+
+    @GET("movie/popular")
     Call<MoviesSearchResponse> getPopularMovies(
+            @Query("api_key") String api_key
+    );
+
+    @GET("movie/upcoming")
+    Call<MoviesSearchResponse> getUpcomingMovies(
+            @Query("api_key") String api_key
+    );
+
+    @GET("movie/top_rated")
+    Call<MoviesSearchResponse> getTopRatedMovies(
             @Query("api_key") String api_key
     );
 
