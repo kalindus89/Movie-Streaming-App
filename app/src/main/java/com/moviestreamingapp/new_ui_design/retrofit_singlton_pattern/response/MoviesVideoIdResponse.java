@@ -10,28 +10,22 @@ import java.util.List;
 //this class is for getting multiple movies in results array
 //https://api.themoviedb.org/3/movie/popular?api_key=459351d1311a26f26c93016a0d788db7
 
-public class MoviesSearchResponse {
+public class MoviesVideoIdResponse {
 
-    @SerializedName("total_results")
-    private int total_results;
+
 
     @SerializedName("results")
     //@Expose() then you can uses different name for object
-    private List<MovieModel> results;
+    private List<VideoModel> results;
 
-    public int getTotal_results() {
-        return total_results;
-    }
-
-    public List<MovieModel> getResults() {
+    public List<VideoModel> getResults() {
         return results;
     }
 
     @Override
     public String toString() {
-        return "MoviesResponsesdds{" +
-                "total_results=" + total_results +
-                ", results=" + results +
+        return "MoviesVideoIdResponse{" +
+                "results=" + results +
                 '}';
     }
 }

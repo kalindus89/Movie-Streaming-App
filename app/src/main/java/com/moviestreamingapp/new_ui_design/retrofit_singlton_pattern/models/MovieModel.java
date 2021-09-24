@@ -24,6 +24,7 @@ public class MovieModel implements Parcelable {
     String original_language;
     String backdrop_path;
 
+
     public MovieModel(String title, String poster_path, String release_date, int id, float vote_average, String overview, String original_language, String backdrop_path) {
         this.title = title;
         this.poster_path = poster_path;
@@ -76,6 +77,8 @@ public class MovieModel implements Parcelable {
     public String getBackdrop_path() {
         return backdrop_path;
     }
+
+
 
     @Override
     public int describeContents() {

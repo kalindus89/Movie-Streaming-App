@@ -2,6 +2,7 @@ package com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern;
 
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.models.MovieModel;
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.response.MoviesSearchResponse;
+import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.response.MoviesVideoIdResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -20,6 +21,12 @@ public interface MovieApiInterface {
     //https://api.themoviedb.org/3/movie/550?api_key=459351d1311a26f26c93016a0d788db7
     @GET("movie/{movie_id}?")
     Call<MovieModel> getMovieFromId(
+            @Path("movie_id") int movie_id,
+            @Query("api_key") String api_key
+    );
+
+    @GET("movie/{movie_id}/videos")
+    Call<MoviesVideoIdResponse> getVideoId(
             @Path("movie_id") int movie_id,
             @Query("api_key") String api_key
     );

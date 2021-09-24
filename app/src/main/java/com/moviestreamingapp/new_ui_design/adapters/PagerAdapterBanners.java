@@ -64,6 +64,7 @@ public class PagerAdapterBanners extends PagerAdapter {
                 intent.putExtra("mTitle",movieModelList.get(position).getTitle());
                 intent.putExtra("mOverView",movieModelList.get(position).getOverview());
                 intent.putExtra("imgUrl",movieModelList.get(position).getBackdrop_path());
+                intent.putExtra("movieId",movieModelList.get(position).getId());
                 view.getContext().startActivity(intent);
             }
         });

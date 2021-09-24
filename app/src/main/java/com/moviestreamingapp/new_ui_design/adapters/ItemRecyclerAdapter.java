@@ -47,6 +47,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
                 intent.putExtra("mTitle",movieModelList.get(holder.getAdapterPosition()).getTitle());
                 intent.putExtra("mOverView",movieModelList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("imgUrl",movieModelList.get(holder.getAdapterPosition()).getBackdrop_path());
+                intent.putExtra("movieId",movieModelList.get(holder.getAdapterPosition()).getId());
                 holder.itemView.getContext().startActivity(intent);
             }
         });
