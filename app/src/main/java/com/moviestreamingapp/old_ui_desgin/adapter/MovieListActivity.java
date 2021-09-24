@@ -46,8 +46,14 @@ public class MovieListActivity extends AppCompatActivity {
 
         getSearchResults();
 
+
+        display();
+
+    }
+
+    private void display(){
         LinearLayoutManager layoutManageSimple = new LinearLayoutManager(this);
-        layoutManageSimple.setOrientation(RecyclerView.HORIZONTAL);
+        layoutManageSimple.setOrientation(RecyclerView.VERTICAL);
 
         recyclerView.setLayoutManager(layoutManageSimple);
 
@@ -60,13 +66,13 @@ public class MovieListActivity extends AppCompatActivity {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                if(!recyclerView.canScrollHorizontally(1)){
+                if(!recyclerView.canScrollVertically(1)){
+                    System.out.println("aaaaaaaa "+pageNumberStart);
                     getSearchMovieResponse("Comedy",pageNumberStart+1);
+
                 }
             }
         });
-
-
     }
     private void getSearchResults() {
 

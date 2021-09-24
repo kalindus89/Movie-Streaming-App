@@ -1,9 +1,11 @@
 package com.moviestreamingapp.new_ui_design;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -16,7 +18,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -43,17 +48,24 @@ public class HomeActivity extends AppCompatActivity {
     PagerAdapterBanners pagerAdapterBanners;
     ViewPager banner_view_pager;
     TabLayout tab_indicator,tab_layout_home;
+
     List<MovieModel> movieModelList = new ArrayList<>();
     List<MovieModel> movieModelListPopular = new ArrayList<>();
     List<MovieModel> movieModelListUpComing = new ArrayList<>();
     List<MovieModel> movieModelListTopRated = new ArrayList<>();
+    List<MovieModel> movieSearchList;
+
     RecyclerView main_recyclerView,category_recyclerView;
     MainRecyclerAdapter mainRecyclerAdapter;
+    ItemRecyclerAdapter itemRecyclerAdapter ;
     List<AllMovieCategories> allMovieCategoriesList = new ArrayList<>();
+
     AppBarLayout appbar;
     NestedScrollView nested_scroll;
     Toolbar toolbar;
-
+    TextView seeMore;
+    String mainCategory;
+    public int pageNumberStart=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
         appbar = findViewById(R.id.appbar);
         nested_scroll = findViewById(R.id.nested_scroll);
         toolbar = findViewById(R.id.toolbar);
+        seeMore = findViewById(R.id.seeMore);
 
         setSupportActionBar(toolbar);
         //setScrollDefaultState();
@@ -123,17 +136,58 @@ public class HomeActivity extends AppCompatActivity {
         getUpcomingMovies();
         getTopRatedMovies();
 
+        seeMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSearchedMovies(mainCategory,(pageNumberStart+1));
+                seeMore.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     public void showHomeTabMovies(){
         category_recyclerView.setVisibility(View.GONE);
         main_recyclerView.setVisibility(View.VISIBLE);
+        seeMore.setVisibility(View.GONE);
 
     }
+
+
     public void showOtherTabMovies(String category){
+        mainCategory=category;
+        pageNumberStart=1;
+
+        seeMore.setVisibility(View.GONE);
         main_recyclerView.setVisibility(View.GONE);
         category_recyclerView.setVisibility(View.VISIBLE);
-        getSearchedMovies(category);
+
+        movieSearchList = new ArrayList<>();
+        movieSearchList.clear();
+
+
+      //  RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+       // category_recyclerView.setLayoutManager(layoutManager);
+
+        category_recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        itemRecyclerAdapter = new ItemRecyclerAdapter(this, movieSearchList);
+        category_recyclerView.setAdapter(itemRecyclerAdapter);
+
+        getSearchedMovies(category,pageNumberStart);
+
+        /*category_recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if(!recyclerView.canScrollVertically(1)){
+
+                    getSearchedMovies("kids",(pageNumberStart+1));
+                   System.out.println(category+" aaaaaaa "+pageNumberStart);
+                   // progressBar.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });*/
+
     }
 
     public void setMain_recyclerView(List<AllMovieCategories> allMovieCatList) {
@@ -318,28 +372,22 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-    private void getSearchedMovies(String searchTerm) {
+    private void getSearchedMovies(String searchTerm,int pageNumber) {
 
 
-        List<MovieModel> movieSearchList = new ArrayList<>();
-        List<AllMovieCategories> searchMovieCategoriesList = new ArrayList<>();
-        searchMovieCategoriesList.add(new AllMovieCategories(searchTerm,1,movieSearchList));
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        category_recyclerView.setLayoutManager(layoutManager);
-        CategoryRecyclerAdapter categoryRecyclerAdapter  = new CategoryRecyclerAdapter(this, searchMovieCategoriesList);
-        category_recyclerView.setAdapter(categoryRecyclerAdapter);
+        pageNumberStart=pageNumber;
 
         MovieApiInterface movieApiInterface = ServiceClass.getMovieApiInterface();
 
-        movieApiInterface.getSearchMovies(Credentials.API_KEY,searchTerm,1).enqueue(new Callback<MoviesSearchResponse>() {
+        movieApiInterface.getSearchMovies(Credentials.API_KEY,searchTerm,pageNumber).enqueue(new Callback<MoviesSearchResponse>() {
             @Override
             public void onResponse(Call<MoviesSearchResponse> call, Response<MoviesSearchResponse> response) {
 
                 if (response.isSuccessful()) {
 
                     movieSearchList.addAll(response.body().getResults());
-                    categoryRecyclerAdapter.notifyDataSetChanged();
+                    itemRecyclerAdapter.notifyDataSetChanged();
+                    seeMore.setVisibility(View.VISIBLE);
 
                 } else {
 

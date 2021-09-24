@@ -59,9 +59,9 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
 
     public void setItem_recyclerView( RecyclerView itemRecyclerView,List<MovieModel> movieModelListItem) {
 
-        //RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
-      //  itemRecyclerView.setLayoutManager(layoutManager);
-        itemRecyclerView.setLayoutManager(new GridLayoutManager(context, 3));
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
+        itemRecyclerView.setLayoutManager(layoutManager);
+        //itemRecyclerView.setLayoutManager(new GridLayoutManager(context, 3));
         ItemRecyclerAdapter itemRecyclerAdapter = new ItemRecyclerAdapter(context, movieModelListItem);
         itemRecyclerView.setAdapter(itemRecyclerAdapter);
         itemRecyclerAdapter.notifyDataSetChanged();
