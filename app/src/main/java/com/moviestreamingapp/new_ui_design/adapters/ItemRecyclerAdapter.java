@@ -1,4 +1,4 @@
-package com.moviestreamingapp.new_ui_design;
+package com.moviestreamingapp.new_ui_design.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.moviestreamingapp.R;
+import com.moviestreamingapp.new_ui_design.MovieDetailDisplay;
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.models.MovieModel;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(holder.itemView.getContext(),MovieDetailDisplay.class);
+                Intent intent= new Intent(holder.itemView.getContext(), MovieDetailDisplay.class);
                 intent.putExtra("mTitle",movieModelList.get(holder.getAdapterPosition()).getTitle());
                 intent.putExtra("mOverView",movieModelList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("imgUrl",movieModelList.get(holder.getAdapterPosition()).getBackdrop_path());

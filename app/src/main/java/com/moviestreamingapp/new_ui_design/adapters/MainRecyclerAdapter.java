@@ -1,4 +1,4 @@
-package com.moviestreamingapp.new_ui_design;
+package com.moviestreamingapp.new_ui_design.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moviestreamingapp.R;
+import com.moviestreamingapp.new_ui_design.AllMovieCategories;
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.models.MovieModel;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull MainRecyclerAdapter.MainViewHolder holder, int position) {
 
-        holder.item_category.setText(allMovieCategoriesList.get(position).categoryTitle);
+        holder.item_category.setText(allMovieCategoriesList.get(position).getCategoryTitle());
 
         setItem_recyclerView(holder.itemRecyclerView,allMovieCategoriesList.get(position).getMovieModelList());
     }

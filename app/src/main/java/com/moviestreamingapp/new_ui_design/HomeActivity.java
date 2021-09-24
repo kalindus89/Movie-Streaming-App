@@ -1,6 +1,5 @@
 package com.moviestreamingapp.new_ui_design;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -18,15 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.GridLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.moviestreamingapp.R;
+import com.moviestreamingapp.new_ui_design.adapters.ItemRecyclerAdapter;
+import com.moviestreamingapp.new_ui_design.adapters.MainRecyclerAdapter;
+import com.moviestreamingapp.new_ui_design.adapters.PagerAdapterBanners;
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.Credentials;
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.MovieApiInterface;
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.ServiceClass;

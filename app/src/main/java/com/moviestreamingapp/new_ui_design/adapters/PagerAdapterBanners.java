@@ -1,4 +1,4 @@
-package com.moviestreamingapp.new_ui_design;
+package com.moviestreamingapp.new_ui_design.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.moviestreamingapp.R;
+import com.moviestreamingapp.new_ui_design.MovieDetailDisplay;
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.models.MovieModel;
 import com.moviestreamingapp.old_ui_desgin.adapter.MovieDetailActivity;
 
