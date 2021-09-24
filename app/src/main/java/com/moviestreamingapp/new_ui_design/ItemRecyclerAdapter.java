@@ -1,6 +1,7 @@
 package com.moviestreamingapp.new_ui_design;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,17 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
 
         holder.movieName.setText(movieModelList.get(position).getTitle());
         Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movieModelList.get(position).getBackdrop_path()).placeholder(R.drawable.loading_image).into(holder.item_image);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(holder.itemView.getContext(),MovieDetailDisplay.class);
+                intent.putExtra("mTitle",movieModelList.get(holder.getAdapterPosition()).getTitle());
+                intent.putExtra("mOverView",movieModelList.get(holder.getAdapterPosition()).getOverview());
+                intent.putExtra("imgUrl",movieModelList.get(holder.getAdapterPosition()).getBackdrop_path());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
 
     }
 

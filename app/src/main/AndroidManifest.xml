@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieStreamingApp">
         <activity
+            android:name=".new_ui_design.MovieDetailDisplay"
+            android:exported="true" />
+        <activity
             android:name=".old_ui_desgin.adapter.MovieListActivity"
             android:exported="true" />
         <activity

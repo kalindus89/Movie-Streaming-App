@@ -1,6 +1,7 @@
 package com.moviestreamingapp.new_ui_design;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.bumptech.glide.Glide;
 import com.moviestreamingapp.R;
 import com.moviestreamingapp.new_ui_design.retrofit_singlton_pattern.models.MovieModel;
+import com.moviestreamingapp.old_ui_desgin.adapter.MovieDetailActivity;
 
 import java.util.List;
 
@@ -53,6 +55,17 @@ public class PagerAdapterBanners extends PagerAdapter {
         movieName.setText(movieModelList.get(position).getTitle());
         Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movieModelList.get(position).getBackdrop_path()).placeholder(R.drawable.loading_image).into(banner_imageView);
         container.addView(view);
+
+        banner_imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MovieDetailDisplay.class);
+                intent.putExtra("mTitle",movieModelList.get(position).getTitle());
+                intent.putExtra("mOverView",movieModelList.get(position).getOverview());
+                intent.putExtra("imgUrl",movieModelList.get(position).getBackdrop_path());
+                view.getContext().startActivity(intent);
+            }
+        });
 
         return view;
     }
