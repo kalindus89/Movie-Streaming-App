@@ -35,6 +35,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull ItemRecyclerAdapter.MainViewHolder holder, int position) {
 
+        holder.movieName.setText(movieModelList.get(position).getTitle());
         Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movieModelList.get(position).getBackdrop_path()).placeholder(R.drawable.loading_image).into(holder.item_image);
 
     }
@@ -47,10 +48,12 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
     public class MainViewHolder extends RecyclerView.ViewHolder {
 
         ImageView item_image;
+        TextView movieName;
 
         public MainViewHolder(@NonNull View itemView) {
             super(itemView);
             item_image=itemView.findViewById(R.id.item_image);
+            movieName=itemView.findViewById(R.id.movieName);
         }
     }
 }

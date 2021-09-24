@@ -14,4 +14,17 @@
         android:layout_height="100dp"
         android:scaleType="fitXY"
         tools:srcCompat="@drawable/loading_image" />
+    <TextView
+        android:id="@+id/movieName"
+        android:layout_width="180dp"
+        android:layout_height="25dp"
+        android:background="#BC0E0D0E"
+        android:gravity="left|center"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_gravity="bottom"
+        android:paddingLeft="6dp"
+        android:text="Category"
+        android:textColor="#C1FFFFFF"
+        android:textSize="13sp" />
 </androidx.cardview.widget.CardView>
