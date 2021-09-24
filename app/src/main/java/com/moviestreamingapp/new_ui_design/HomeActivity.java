@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
@@ -41,12 +42,12 @@ public class HomeActivity extends AppCompatActivity {
 
     PagerAdapterBanners pagerAdapterBanners;
     ViewPager banner_view_pager;
-    TabLayout tab_indicator;
+    TabLayout tab_indicator,tab_layout_home;
     List<MovieModel> movieModelList = new ArrayList<>();
     List<MovieModel> movieModelListPopular = new ArrayList<>();
     List<MovieModel> movieModelListUpComing = new ArrayList<>();
     List<MovieModel> movieModelListTopRated = new ArrayList<>();
-    RecyclerView main_recyclerView;
+    RecyclerView main_recyclerView,category_recyclerView;
     MainRecyclerAdapter mainRecyclerAdapter;
     List<AllMovieCategories> allMovieCategoriesList = new ArrayList<>();
     AppBarLayout appbar;
@@ -59,8 +60,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         tab_indicator = findViewById(R.id.tab_indicator);
+        tab_layout_home = findViewById(R.id.tab_layout_home);
         banner_view_pager = findViewById(R.id.banner_view_pager);
         main_recyclerView = findViewById(R.id.main_recyclerView);
+        category_recyclerView = findViewById(R.id.category_recyclerView);
         appbar = findViewById(R.id.appbar);
         nested_scroll = findViewById(R.id.nested_scroll);
         toolbar = findViewById(R.id.toolbar);
@@ -68,10 +71,49 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //setScrollDefaultState();
 
+
+        tab_layout_home.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                switch (tab.getPosition()){
+                    case 1:
+                        showOtherTabMovies("Kids");
+                        return;
+                    case 2:
+                        showOtherTabMovies("Comedy");
+                        return;
+                    case 3:
+                        showOtherTabMovies("Action");
+                        return;
+                    case 4:
+                        showOtherTabMovies("Drama");
+                        return;
+                    case 5:
+                        showOtherTabMovies("Romantic");
+                        return;
+                    default:
+                        showHomeTabMovies();
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
         allMovieCategoriesList.add(new AllMovieCategories("Now Playing", 1, movieModelList));
         allMovieCategoriesList.add(new AllMovieCategories("Popular", 2, movieModelListPopular));
         allMovieCategoriesList.add(new AllMovieCategories("UpComing", 3, movieModelListUpComing));
-         allMovieCategoriesList.add(new AllMovieCategories("Top Rated", 4,movieModelListTopRated));
+        allMovieCategoriesList.add(new AllMovieCategories("Top Rated", 4,movieModelListTopRated));
 
         setMain_recyclerView(allMovieCategoriesList);
 
@@ -81,6 +123,25 @@ public class HomeActivity extends AppCompatActivity {
         getUpcomingMovies();
         getTopRatedMovies();
 
+    }
+
+    public void showHomeTabMovies(){
+        category_recyclerView.setVisibility(View.GONE);
+        main_recyclerView.setVisibility(View.VISIBLE);
+
+    }
+    public void showOtherTabMovies(String category){
+        main_recyclerView.setVisibility(View.GONE);
+        category_recyclerView.setVisibility(View.VISIBLE);
+        getSearchedMovies(category);
+    }
+
+    public void setMain_recyclerView(List<AllMovieCategories> allMovieCatList) {
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        main_recyclerView.setLayoutManager(layoutManager);
+        mainRecyclerAdapter = new MainRecyclerAdapter(this, allMovieCatList);
+        main_recyclerView.setAdapter(mainRecyclerAdapter);
     }
 
     public void setScrollDefaultState(){
@@ -257,14 +318,48 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+    private void getSearchedMovies(String searchTerm) {
 
-    public void setMain_recyclerView(List<AllMovieCategories> allMovieCatList) {
+
+        List<MovieModel> movieSearchList = new ArrayList<>();
+        List<AllMovieCategories> searchMovieCategoriesList = new ArrayList<>();
+        searchMovieCategoriesList.add(new AllMovieCategories(searchTerm,1,movieSearchList));
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        main_recyclerView.setLayoutManager(layoutManager);
-        mainRecyclerAdapter = new MainRecyclerAdapter(this, allMovieCatList);
-        main_recyclerView.setAdapter(mainRecyclerAdapter);
+        category_recyclerView.setLayoutManager(layoutManager);
+        CategoryRecyclerAdapter categoryRecyclerAdapter  = new CategoryRecyclerAdapter(this, searchMovieCategoriesList);
+        category_recyclerView.setAdapter(categoryRecyclerAdapter);
+
+        MovieApiInterface movieApiInterface = ServiceClass.getMovieApiInterface();
+
+        movieApiInterface.getSearchMovies(Credentials.API_KEY,searchTerm,1).enqueue(new Callback<MoviesSearchResponse>() {
+            @Override
+            public void onResponse(Call<MoviesSearchResponse> call, Response<MoviesSearchResponse> response) {
+
+                if (response.isSuccessful()) {
+
+                    movieSearchList.addAll(response.body().getResults());
+                    categoryRecyclerAdapter.notifyDataSetChanged();
+
+                } else {
+
+                    try {
+                        Log.v("Tag", response.errorBody().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<MoviesSearchResponse> call, Throwable t) {
+
+            }
+        });
     }
+
 
     class AutoSlider extends TimerTask {
 
@@ -316,7 +411,8 @@ public class HomeActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                    return false;
+                showOtherTabMovies(query);
+                return false;
             }
 
             @Override
