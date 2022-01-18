@@ -78,7 +78,11 @@ public class MovieModel implements Parcelable {
         return backdrop_path;
     }
 
+//Parcelable helps to pass datato activity fast.
+    //intent.putExtra("MovieModel", new MovieModel("1","",""));
 
+    //Bundle data = getIntent().getExtras();
+    //Student student = (Student) data.getParcelable("student");
 
     @Override
     public int describeContents() {

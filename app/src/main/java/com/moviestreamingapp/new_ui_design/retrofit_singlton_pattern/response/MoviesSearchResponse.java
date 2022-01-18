@@ -29,7 +29,7 @@ public class MoviesSearchResponse {
 
     @Override
     public String toString() {
-        return "MoviesResponsesdds{" +
+        return "MoviesResponse{" +
                 "total_results=" + total_results +
                 ", results=" + results +
                 '}';
